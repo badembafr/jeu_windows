@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/decor/portes/porte.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Sprite
+
+func _on_porte_body_entered(body) :
+	if body.name == \"perso\" :
+		get_tree().change_scene(\"res://scenes/niveaux/niveau_05.tscn\")
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30.5, 64 )
+
+[node name="changement_porte" type="Sprite"]
+position = Vector2( 101, 109 )
+scale = Vector2( 1.64844, 1.61719 )
+texture = ExtResource( 1 )
+script = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="porte" type="Area2D" parent="."]
+
+[node name="porte-hitbox" type="CollisionShape2D" parent="porte"]
+position = Vector2( -1.5, 0 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="porte" to="." method="_on_porte_body_entered"]

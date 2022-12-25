@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/bg/lifebar-img/lifebar_vide.png" type="Texture" id=1]
+[ext_resource path="res://textures/bg/lifebar-img/lifebar_pleine.png" type="Texture" id=2]
+[ext_resource path="res://scripts/lifebar/lifebar1.gd" type="Script" id=3]
+
+[node name="lifebar" type="CanvasLayer"]
+
+[node name="lifebar-img" type="TextureProgress" parent="."]
+margin_left = 8.0
+margin_top = -16.0
+margin_right = 140.0
+margin_bottom = 58.0
+max_value = 150.0
+value = 150.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+script = ExtResource( 3 )

@@ -1,0 +1,81 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://scripts/perso/perso-main.gd" type="Script" id=1]
+[ext_resource path="res://persos-img/perso-main/courir/runV7.png" type="Texture" id=2]
+[ext_resource path="res://persos-img/perso-main/courir/runV8.png" type="Texture" id=3]
+[ext_resource path="res://persos-img/perso-main/courir/runV9.png" type="Texture" id=4]
+[ext_resource path="res://persos-img/perso-main/courir/runV4.png" type="Texture" id=6]
+[ext_resource path="res://persos-img/perso-main/sauter/Jump (1)3.png" type="Texture" id=8]
+[ext_resource path="res://persos-img/perso-main/courir/runV3.png" type="Texture" id=10]
+[ext_resource path="res://persos-img/perso-main/attaquer/main-attaquer2.png" type="Texture" id=11]
+[ext_resource path="res://persos-img/perso-main/attaquer/main-attaquer3.png" type="Texture" id=12]
+[ext_resource path="res://persos-img/perso-main/courir/runV5.png" type="Texture" id=13]
+[ext_resource path="res://persos-img/perso-main/attaquer/main-attaquer4.png" type="Texture" id=14]
+[ext_resource path="res://persos-img/perso-main/attaquer/main-attaquer1.png" type="Texture" id=15]
+[ext_resource path="res://persos-img/perso-main/courir/runV6.png" type="Texture" id=16]
+[ext_resource path="res://persos-img/perso-main/attaquer/main-attaquer5.png" type="Texture" id=17]
+[ext_resource path="res://persos-img/perso-main/respiration/respiration2.png" type="Texture" id=18]
+[ext_resource path="res://persos-img/perso-main/respiration/respiration1.png" type="Texture" id=19]
+[ext_resource path="res://persos-img/perso-main/respiration/respiration3.png" type="Texture" id=20]
+[ext_resource path="res://persos-img/perso-main/respiration/respiration4.png" type="Texture" id=21]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "attaque",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 13 ), ExtResource( 16 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "courir",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "respiration",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "sauter",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 31.5, 48.375 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 79, 54 )
+
+[node name="perso" type="KinematicBody2D"]
+position = Vector2( 74, 50 )
+script = ExtResource( 1 )
+
+[node name="perso-img" type="AnimatedSprite" parent="."]
+position = Vector2( 116.781, 55.808 )
+scale = Vector2( 0.235839, 0.235839 )
+z_index = 5
+frames = SubResource( 1 )
+animation = "attaque"
+frame = 4
+speed_scale = 2.0
+
+[node name="perso-hitbox" type="CollisionShape2D" parent="."]
+position = Vector2( 104.5, 78.375 )
+shape = SubResource( 2 )
+
+[node name="perso-camera" type="Camera2D" parent="."]
+current = true
+limit_left = -100
+limit_top = -100
+smoothing_enabled = true
+smoothing_speed = 2.0
+
+[node name="zone_attaque" type="Area2D" parent="." groups=["coup"]]
+
+[node name="zone_attaque_hitbox" type="CollisionShape2D" parent="zone_attaque"]
+position = Vector2( 105, 84 )
+shape = SubResource( 3 )
+
+[connection signal="animation_finished" from="perso-img" to="." method="_on_persoimg_animation_finished"]
