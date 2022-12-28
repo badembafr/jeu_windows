@@ -36,10 +36,16 @@ Je compe ajouter à mon site, une page dédiée au projet. Avec les exécutables
 
 Crédits :
 -All* : Bademba SANGARE
--*Musique : Through Them Mountains
+
+-*Musique :
+Auteur : Tausdei
+Lien de ses musiques : https://soundcloud.com/user-326308668
+Lien de téléchargement : https://opengameart.org/content/through-the-mountains
+Titre : Through the Mountains
 
 
 Bademba SANGARE
 sangarebademba.mail@gmail.com
-https://bademba.fr/#projets
+https://bademba.fr/projets/jeu.html
 https://github.com/badembafr/jeu
+https://github.com/badembafr/jeu_ressources
